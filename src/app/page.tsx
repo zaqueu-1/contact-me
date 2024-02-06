@@ -3,12 +3,14 @@ import Image from "next/image"
 import styles from "./page.module.css"
 import Navbar from "../components/Navbar"
 import { useState, useEffect } from "react"
+import { FaUserEdit } from "react-icons/fa"
+import { FaUserTimes } from "react-icons/fa"
 
 export default function Home() {
-  const [newUserModal, setNewUserModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false)
 
-  const handleNewUserModal = () => {
-    setNewUserModal(!newUserModal)
+  const handleNewContactModal = () => {
+    setOpenModal(!openModal)
   }
 
   const users = [
@@ -37,15 +39,16 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Navbar handleNewUserModal={handleNewUserModal}/>
-      {newUserModal && (
+      <Navbar handleNewContactModal={handleNewContactModal}/>
+      {openModal && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
-            <span>Cadastrar novo usuário</span>
-            <input type="text" placeholder="Nome" />
-            <input type="text" placeholder="E-mail" />
-            <input type="text" placeholder="Telefone" />
-            <button>Cadastrar</button>
+            <div className={styles.inputs}>
+              <input type="text" placeholder="Nome" />
+              <input type="text" placeholder="E-mail" />
+              <input type="text" placeholder="Telefone" />
+              <button>Cadastrar</button>
+            </div>
           </div>
         </div>
       )}
@@ -56,7 +59,7 @@ export default function Home() {
           <span>E-mail</span>
           <span>Telefone</span>
           <span>Data de cadastro</span>
-          <span>Controles</span>
+          <span>Ações</span>
         </div>
         <div className={styles.contacts}>
           {users.map((user, index) => (
@@ -67,8 +70,8 @@ export default function Home() {
               <span>{user.tel}</span>
               <span>{user.createdAt}</span>
               <div className={styles.controls}>
-                <button>Editar</button>
-                <button>Excluir</button>
+                <button><FaUserEdit /></button>
+                <button><FaUserTimes /></button>
               </div>
             </div>
           ))}
