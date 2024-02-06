@@ -2,7 +2,7 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 import Navbar from "../components/Navbar"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Home() {
   const [newUserModal, setNewUserModal] = useState(false)
@@ -33,7 +33,6 @@ export default function Home() {
       tel: "(11) 99999-9999",
       createdAt: "01/01/2021",
     },
-
   ]
 
   return (
