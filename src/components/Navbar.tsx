@@ -4,15 +4,15 @@ import { FaSignOutAlt } from "react-icons/fa"
 import { FaUserPlus } from "react-icons/fa"
 
 interface NavbarProps {
-    handleNewUserModal: () => void
+    handleNewContactModal: () => void
   }
 
-export default function Navbar({handleNewUserModal}: NavbarProps) {
+export default function Navbar({handleNewContactModal}: NavbarProps) {
   return (
     <div className={styles.navbar}>
       <div className={styles.itens}>
         <Image src="/assets/logo.png" alt="Impacta" width={150} height={30} />
-        <div onClick={() => handleNewUserModal()}  className={styles.newuser}>
+        <div onClick={() => handleNewContactModal()}  className={styles.newuser}>
             <FaUserPlus />
             <span>Cadastrar usuário</span>
         </div>
