@@ -3,58 +3,7 @@
   background-color: #EDEDED;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 95%;
-  max-width: 1200px;
-  background-color: white;
-  margin: 2rem auto;
-  border-radius: 6px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: .5rem;
-  background-color: #49B48A;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-}
-
-.header span {
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.contacts {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: .5rem;
-}
-
-.contact {
-  display: flex;
-  padding: .5rem 0;
-  border-bottom: 1px solid #EDEDED;
-  color: black;
-}
-
-.contact span {
-  width: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-}
-
-/* Modal */
+/* Modals */
 .modal {
   display: flex;
   justify-content: center;
@@ -80,10 +29,6 @@
   padding: 1rem 0;
 }
 
-.modalContent span {
-  color: black;
-}
-
 .inputs {
   display: flex;
   gap: .5rem;
@@ -96,44 +41,21 @@
   padding: .5rem;
   border-radius: 6px;
   background-color: #EDEDED;
+  color: rgb(120, 120, 120);
+  outline: none;
   border: none;
 }
 
-.inputs button {
+.addContactBtn, .editContactBtn {
   padding: .5rem;
   border-radius: 6px;
   border: none;
   background-color: #49B48A;
   color: white;
   cursor: pointer;
+  width: 80px;
 }
 
-/* Controls */
-.controls {
-  display: flex;
-  justify-content: flex-start;
-  gap: .5rem;
-  align-items: center;
-  width: 20%;
-}
-
-.controls button {
-  padding: .5rem;
-  border-radius: 6px;
-  border: none;
-  background-color: #49B48A;
-  color: white;
-  cursor: pointer;
-}
-
-.controls button svg {
-  font-size: 1rem;
-}
-
-.controls button:first-of-type {
+.editContactBtn {
   background-color: rgb(67, 67, 236);
-}
-
-.controls button:last-of-type {
-  background-color: #f04b4b;
 }
