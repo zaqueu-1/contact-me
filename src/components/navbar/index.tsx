@@ -1,20 +1,19 @@
 import Image from "next/image" 
 import styles from "./navbar.module.css"
 import { FaSignOutAlt } from "react-icons/fa"
-import { FaUserPlus } from "react-icons/fa"
+import { FaUserPlus, FaSearch } from "react-icons/fa"
+import { NavbarProps } from "./types"
 
-interface NavbarProps {
-    handleNewContactModal: () => void
-  }
-
-export default function Navbar({handleNewContactModal}: NavbarProps) {
+export default function Navbar({handleNewContactModal,handleSearchModal}: NavbarProps) {
   return (
     <div className={styles.navbar}>
       <div className={styles.itens}>
         <Image src="/assets/logo.png" alt="Impacta" width={150} height={30} />
-        <div onClick={() => handleNewContactModal()}  className={styles.newuser}>
+        <div onClick={() => handleNewContactModal()}  className={styles.newContact}>
             <FaUserPlus />
-            <span>Cadastrar usuário</span>
+        </div>
+        <div onClick={() => handleSearchModal()}  className={styles.openSearch}>
+            <FaSearch style={{fontSize:'1.2rem'}} />
         </div>
       </div>
 

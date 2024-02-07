@@ -1,0 +1,133 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    background-color: none;
+    margin: 2rem auto;
+    border-radius: 6px;
+    position: relative;
+    padding-top: 40px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .5rem;
+    background-color: #49B48A;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  
+  .header span, .contact span {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .header span:first-of-type, .header span:nth-of-type(2), .contact span:first-of-type, .contact span:nth-of-type(2){
+    width: 30%;
+  }
+  
+  .header span:last-of-type, .controls {
+    width: 10%;
+  }
+  
+  .contacts, .noContacts {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .noContacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: white;
+    border-radius: 0 0 6px 6px;
+  }
+  
+  .noContacts span {
+    font-size: 1.2rem;
+    font-weight: 200;
+    color: rgb(120, 120, 120);
+  }
+  
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: .5rem;
+    background-color: rgb(251, 251, 251);
+    color: rgb(62, 62, 62);
+  }
+
+  .contact:nth-of-type(even) {
+    background-color: #dddddd;
+  }
+
+  .contact:last-of-type {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+  }
+  
+  /* Controls */
+  .controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: .5rem;
+    align-items: center;
+  }
+  
+  .controls button {
+    padding: .5rem;
+    border-radius: 6px;
+    border: none;
+    background-color: #49B48A;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .controls button svg {
+    font-size: 1rem;
+  }
+  
+  .controls button:first-of-type {
+    background-color: rgb(67, 67, 236);
+  }
+  
+  .controls button:last-of-type {
+    background-color: #f04b4b;
+  }
+
+  .advancedSearch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    height: 40px;
+    padding: .5rem;
+    background-color: #49B48A;
+    border-radius: 6px;
+    position: absolute;
+    top: -6px;
+    right: 0;
+  }
+
+  .advancedSearch input {
+    width: 50%;
+    height: 100%;
+    padding: .5rem;
+    border-radius: 3px;
+    border: none;
+    background-color: white;
+    color: rgb(120, 120, 120);
+    outline: none;
+  }
