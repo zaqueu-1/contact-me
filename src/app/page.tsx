@@ -19,6 +19,13 @@ export default function Home() {
   const [contactToEdit, setContactToEdit] = useState('')
   const {register, handleSubmit} = useForm<FormValues>()
 
+  useEffect(() => {
+    loadContacts()
+  }, [])
+
+  useEffect(() => {
+  }, [contactToEdit])
+
   const loadContacts = async () => {
     try {
       const res = await axios.get(`api/contacts`)
@@ -113,13 +120,6 @@ export default function Home() {
   const handleError = () => {
     toast.error(errorMsg)
   }
-
-  useEffect(() => {
-    loadContacts()
-  }, [])
-
-  useEffect(() => {
-  }, [contactToEdit])
 
   return (
     <main className={styles.main}>

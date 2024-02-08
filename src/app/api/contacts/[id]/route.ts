@@ -4,10 +4,10 @@ import {NextRequest, NextResponse} from 'next/server'
 
 export async function PUT(req: NextRequest, {params}: {params: { id: string }}) {
     const {id} = params
-    const {newName: name, newEmail: email, newTel: tel} = await req.json()
-
+    
     try {
         await connectToDb()
+        const {newName: name, newEmail: email, newTel: tel} = await req.json()
         await Contact.findByIdAndUpdate(id, {name, email, tel})
         return NextResponse.json({message: 'Contact updated successfully'}, {status: 200})
     } catch(error) {
