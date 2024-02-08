@@ -11,7 +11,7 @@ O projeto aqui encontrado se trata de um desafio técnico em Next.js e foi desen
 ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-%23EC5990.svg?style=for-the-badge&logo=reacthookform&logoColor=white)
 ## Deploy
 
-https://
+https://iprazos-front.vercel.app/
 
 ## Instalação de dependências
 Certifique-se de ter o Node instalado em sua máquina. Clone o repositório e, no diretório do projeto, execute um dos seguintes comandos pelo terminal, de acordo com o gerenciador de pacotes de sua preferência:
@@ -34,9 +34,12 @@ Em seguida, abra seu navegador e acesse http://localhost:3000
 
 
 ## Estrutura do Projeto
-Abaixo, algumas informações sobre minhas escolhas e tomadas de decisão durante o andamento do projeto:
+As bibliotecas que utilizei no projeto:
 
-* 
+* axios para lidar com requisições
+* react-hook-form para lidar com os formulários 
+* react-icons para importar ícones de forma mais prática
+* react-toastify para criar notificações ao manipular os dados na UI
 ## Autor
 
 - [@zaqueu-1](https://www.github.com/zaqueu-1)
