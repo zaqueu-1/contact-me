@@ -6,6 +6,9 @@ import { useState, useEffect } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import axios from "axios"
 import { FormValues, Contact } from "./types"
+import { handleAddInputs, handleEditInputs, errorMsg } from "./utils/utils"
+import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 
 export default function Home() {
@@ -29,6 +32,11 @@ export default function Home() {
   }
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    if (!handleAddInputs(data)) {
+      handleError()
+      return
+    }
+
     try {
       const res = await axios.post(`api/contacts`, {
         name: data.name,
@@ -37,12 +45,18 @@ export default function Home() {
         createdBy: 'nouser',
       })
       loadContacts()
+      toast.success('Contato adicionado!')
     } catch (error) {
       console.error(error)
     }
   }
 
   const onEdit: SubmitHandler<FormValues> = async (data) => {
+    if (!handleEditInputs(data)) {
+      handleError()
+      return
+    }
+
     try {
       const id = contactToEdit
       const res = await axios.put(`api/contacts/${id}`,{
@@ -51,18 +65,36 @@ export default function Home() {
         newTel: data.newTel,
       })
       loadContacts()
+      toast.success('Contato editado!')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const onDelete = async (id: string) => {
+    try {
+      const res = await axios.delete(`api/contacts/${id}`)
+      loadContacts()
+      toast.success('Contato deletado!')
     } catch (error) {
       console.error(error)
     }
   }
 
   const handleDelete = async (id: string) => {
-    try {
-      const res = await axios.delete(`api/contacts/${id}`)
-      loadContacts()
-    } catch (error) {
-      console.error(error)
-    }
+    Swal.fire({
+      title: "Deseja mesmo deletar?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Sim",
+      denyButtonText: `Não`,
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+        onDelete(id)
+      } else if (result.isDenied) {
+        return
+      }
+    })
   }
 
   const handleNewContactModal = () => {
@@ -76,6 +108,10 @@ export default function Home() {
   const handleEdit = (id: string) => {
     setContactToEdit(id)
     setOpenEdit(!openEdit)
+  }
+
+  const handleError = () => {
+    toast.error(errorMsg)
   }
 
   useEffect(() => {
@@ -94,7 +130,7 @@ export default function Home() {
             <form onSubmit={handleSubmit(onSubmit)} className={styles.inputs}>
               <input type="text" placeholder="Nome" {...register("name")} />
               <input type="text" placeholder="E-mail" {...register("email")} />
-              <input type="text" placeholder="Telefone" {...register("tel")} />
+              <input type="number" placeholder="Telefone" {...register("tel")} />
               <button type="submit" value="submit" className={styles.addContactBtn} >Cadastrar</button>
             </form>
           </div>
@@ -106,7 +142,7 @@ export default function Home() {
             <form onSubmit={handleSubmit(onEdit)} className={styles.inputs}>
               <input type="text" placeholder="Nome" {...register("newName")} />
               <input type="text" placeholder="E-mail" {...register("newEmail")} />
-              <input type="text" placeholder="Telefone" {...register("newTel")} />
+              <input type="number" placeholder="Telefone" {...register("newTel")} />
               <button type="submit" value="submit"className={styles.editContactBtn} >Editar</button>
             </form>
           </div>

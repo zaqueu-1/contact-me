@@ -1,10 +1,9 @@
 import styles from "./contacts-panel.module.css"
 import { FaUserTimes, FaUserEdit } from "react-icons/fa"
 import { ContactsPanelProps } from "./types"
-import { handleCreationDate, handleString } from "@/app/utils/utils"
+import { handleCreationDate, handleString, handleTel} from "@/app/utils/utils"
 import { Contact } from "@/app/types"
 import { useState } from "react"
-
 
 export default function ContactsPanel({contacts, handleDelete, handleEdit, openSearch}: ContactsPanelProps) {
   const [search, setSearch] = useState('')
@@ -43,7 +42,7 @@ export default function ContactsPanel({contacts, handleDelete, handleEdit, openS
             <div key={contact._id} className={styles.contact}>
             <span title={contact.name}>{handleString(contact.name)}</span>
             <span title={contact.email}>{handleString(contact.email)}</span>
-            <span>{contact.tel}</span>
+            <span>{handleTel(contact.tel)}</span>
             <span>{handleCreationDate(contact.createdAt)}</span>
             <div className={styles.controls}>
                 <button onClick={() => handleEdit(contact._id.toString())}><FaUserEdit /></button>
