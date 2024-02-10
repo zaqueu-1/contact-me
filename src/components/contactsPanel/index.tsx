@@ -3,33 +3,35 @@ import { FaUserTimes, FaUserEdit } from "react-icons/fa"
 import { ContactsPanelProps } from "./types"
 import { handleCreationDate, handleString, handleTel} from "@/app/utils/utils"
 import { Contact } from "@/app/types"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Pagination from "@/components/pagination"
 
-export default function ContactsPanel({contacts, handleDelete, handleEdit, openSearch}: ContactsPanelProps) {
-  const [search, setSearch] = useState('')
+export default function ContactsPanel({ filteredContacts, handleDelete, handleEdit, search, openModal, openEdit }: ContactsPanelProps) {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage] = useState(5)
 
-  const handleSearch = (value: string) => {
-    setSearch(value)
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = filteredContacts.slice(indexOfFirstItem, indexOfLastItem)
+
+  const handlePagination = (action: string) => {
+    action == 'next' ? setCurrentPage(currentPage + 1) : setCurrentPage(currentPage - 1)
   }
 
-  const filteredContacts = contacts.filter((contact: Contact) => {
-    const searchText = search.toLowerCase()
+  const handleDisableNext = () => {
+    return indexOfLastItem >= filteredContacts.length
+  }
 
-    return (
-      contact.name.toLowerCase().includes(searchText) ||
-      contact.email.toLowerCase().includes(searchText) ||
-      handleCreationDate(contact.createdAt).includes(searchText)
-    )
-  })
+  useEffect(() => {
+    if (indexOfFirstItem === filteredContacts.length) {
+      if (currentPage > 1) {
+        setCurrentPage(currentPage - 1)
+      }
+    }
+  },[filteredContacts, currentPage])
 
   return (
     <div className={styles.container}>
-        {openSearch && (
-          <div className={styles.advancedSearch}>
-            <span>Busca Avançada:</span>
-            <input type="text" value={search} placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)}/>
-          </div>
-        )}
         <div className={styles.header}>
           <span>Nome</span>
           <span>E-mail</span>
@@ -38,7 +40,7 @@ export default function ContactsPanel({contacts, handleDelete, handleEdit, openS
           <span>Ações</span>
         </div>
         <div className={styles.contacts}>
-        {filteredContacts.map((contact:Contact) => (
+        {currentItems.map((contact:Contact) => (
             <div key={contact._id} className={styles.contact}>
             <span title={contact.name}>{handleString(contact.name)}</span>
             <span title={contact.email}>{handleString(contact.email)}</span>
@@ -50,12 +52,17 @@ export default function ContactsPanel({contacts, handleDelete, handleEdit, openS
             </div>
             </div>
         ))}
-        {filteredContacts.length === 0 && (
+        {filteredContacts.length == 0 && (
             <div className={styles.noContacts}>
               <span>Nenhum contato encontrado</span>
             </div>
         )}
         </div>
+        {(filteredContacts.length > 0 && search == '' && !openModal && !openEdit) && (
+          <div className={styles.paginationContainer}>
+            <Pagination currentPage={currentPage} handleDisableNext={handleDisableNext} handlePagination={handlePagination}/>
+          </div>
+        )}
     </div>
   )
 }
