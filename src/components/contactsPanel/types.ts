@@ -7,4 +7,5 @@ export interface ContactsPanelProps {
     search: string
     openModal: boolean
     openEdit: boolean
+    loading: boolean
 }

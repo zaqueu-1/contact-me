@@ -19,6 +19,7 @@ export default function Home() {
   const [contacts, setContacts] = useState<Contact[]>([])
   const [contactToEdit, setContactToEdit] = useState('')
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(true)
   const {register, handleSubmit} = useForm<FormValues>()
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export default function Home() {
   const loadContacts = async () => {
     try {
       const res = await axios.get(`api/contacts`)
+      setLoading(false)
       setContacts(res.data)
       setOpenModal(false)
       setOpenEdit(false)
@@ -156,7 +158,7 @@ export default function Home() {
           </form>
         </div>
       )}
-      <ContactsPanel handleDelete={handleDelete} handleEdit={handleEdit} search={search} filteredContacts={filteredContacts} openModal={openModal} openEdit={openEdit}/>
+      <ContactsPanel loading={loading} handleDelete={handleDelete} handleEdit={handleEdit} search={search} filteredContacts={filteredContacts} openModal={openModal} openEdit={openEdit}/>
     </main>
   )
 }

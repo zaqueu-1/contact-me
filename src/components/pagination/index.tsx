@@ -1,5 +1,3 @@
-
-
 import styles from "./pagination.module.css"
 import { PaginationProps } from "./types"
 import { BiSolidLeftArrowSquare, BiSolidRightArrowSquare } from "react-icons/bi"
