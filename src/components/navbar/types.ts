@@ -1,4 +1,5 @@
 export interface NavbarProps {
     handleNewContactModal: () => void
-    handleSearchModal: () => void
+    search: string
+    setSearch: (value: string) => void
 }

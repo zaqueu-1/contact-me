@@ -16,8 +16,8 @@ export const handleTel = (tel: string) => {
 export let errorMsg: string = "Preencha todos os campos!"
 
 export const handleAddInputs = (data: FormValues) => {
-    if (!data.name || !data.email || !data.tel) {
-        errorMsg = "Preencha todos os campos!"
+    if (!data.name || !data.tel) {
+        errorMsg = "Preencha os campos corretamente!"
         return false
     }
 
@@ -30,8 +30,8 @@ export const handleAddInputs = (data: FormValues) => {
 }
 
 export const handleEditInputs = (data: FormValues) => {
-    if (!data.newName || !data.newEmail || !data.newTel) {
-        errorMsg = "Preencha todos os campos corretamente!"
+    if (!data.newName || !data.newTel) {
+        errorMsg = "Preencha os campos corretamente!"
         return false
     }
 

@@ -8,23 +8,16 @@
     background: linear-gradient(90deg, #49B48A 10%, #002444 90%);
 }
 
-.logout {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    cursor: pointer;
-    margin-right: 1rem;
-}
-
 .itens {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.newContact, .openSearch {
+.newContact {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .5rem;
     cursor: pointer;
     padding: .5rem;
@@ -32,7 +25,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.newContact:hover, .openSearch:hover {
+.newContact:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -40,4 +33,44 @@
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+/* Search  */
+.advancedSearch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    color: white;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: .5rem;
+    gap: .25rem;
+}
+
+.advancedSearch input {
+    width: 100%;
+    height: 100%;
+    padding: 0 .5rem;
+    border-radius: 3px;
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+    font-size: .9rem;
+}
+
+.advancedSearch input::placeholder {
+    color: white;
+}
+
+/* Logout */
+.logout {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    cursor: pointer;
+    margin-right: 1rem;
+    color: white;
 }

@@ -5,18 +5,22 @@
     align-items: center;
     width: 95%;
     max-width: 1200px;
+    min-width: 880px;
     background-color: none;
-    margin: 2rem auto;
+    margin: 3rem auto;
     border-radius: 6px;
     position: relative;
-    padding-top: 40px;
+    overflow-x: auto;
+    padding-bottom: 3rem;
   }
-  
+
+  /* Contacts Box */
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    min-width: 740px;
     padding: .5rem;
     background-color: #49B48A;
     border-top-left-radius: 6px;
@@ -25,17 +29,24 @@
   
   .header span, .contact span {
     width: 15%;
+    min-width: 150px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
   }
+
+  .header span {
+    color: white;
+  }
   
   .header span:first-of-type, .header span:nth-of-type(2), .contact span:first-of-type, .contact span:nth-of-type(2){
     width: 30%;
+    min-width: 220px;
   }
   
   .header span:last-of-type, .controls {
     width: 10%;
+    min-width: 100px;
   }
   
   .contacts, .noContacts {
@@ -107,27 +118,13 @@
     background-color: #f04b4b;
   }
 
-  .advancedSearch {
+  /* Pagination */
+  .paginationContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 30%;
-    height: 40px;
-    padding: .5rem;
-    background-color: #49B48A;
-    border-radius: 6px;
-    position: absolute;
-    top: -6px;
-    right: 0;
-  }
-
-  .advancedSearch input {
-    width: 50%;
-    height: 100%;
-    padding: .5rem;
-    border-radius: 3px;
-    border: none;
-    background-color: white;
-    color: rgb(120, 120, 120);
-    outline: none;
+    gap: .5rem;
+    margin: 1rem 0;
+    position: fixed;
+    top: 25.5rem;
   }

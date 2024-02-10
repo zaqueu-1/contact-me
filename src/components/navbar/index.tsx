@@ -4,7 +4,7 @@ import { FaSignOutAlt } from "react-icons/fa"
 import { FaUserPlus, FaSearch } from "react-icons/fa"
 import { NavbarProps } from "./types"
 
-export default function Navbar({handleNewContactModal,handleSearchModal}: NavbarProps) {
+export default function Navbar({handleNewContactModal, search, setSearch}: NavbarProps) {
   return (
     <div className={styles.navbar}>
       <div className={styles.itens}>
@@ -12,8 +12,9 @@ export default function Navbar({handleNewContactModal,handleSearchModal}: Navbar
         <div onClick={() => handleNewContactModal()}  className={styles.newContact}>
             <FaUserPlus />
         </div>
-        <div onClick={() => handleSearchModal()}  className={styles.openSearch}>
-            <FaSearch style={{fontSize:'1.2rem'}} />
+        <div className={styles.advancedSearch}>
+          <FaSearch style={{fontSize:'1.2rem'}} />
+          <input type="text" value={search} placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)}/>
         </div>
       </div>
 

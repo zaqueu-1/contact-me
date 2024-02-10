@@ -6,7 +6,9 @@ import { useState, useEffect } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import axios from "axios"
 import { FormValues, Contact } from "./types"
-import { handleAddInputs, handleEditInputs, errorMsg } from "./utils/utils"
+import { handleAddInputs, handleEditInputs, handleCreationDate, errorMsg } from "./utils/utils"
+import { MdAddBox, MdModeEdit } from "react-icons/md"
+import { AiFillCloseSquare } from "react-icons/ai"
 import { toast } from 'react-toastify'
 import Swal from 'sweetalert2'
 
@@ -14,9 +16,9 @@ import Swal from 'sweetalert2'
 export default function Home() {
   const [openModal, setOpenModal] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
-  const [openSearch, setOpenSearch] = useState(false)
   const [contacts, setContacts] = useState<Contact[]>([])
   const [contactToEdit, setContactToEdit] = useState('')
+  const [search, setSearch] = useState('')
   const {register, handleSubmit} = useForm<FormValues>()
 
   useEffect(() => {
@@ -32,7 +34,6 @@ export default function Home() {
       setContacts(res.data)
       setOpenModal(false)
       setOpenEdit(false)
-      openSearch == true ? setOpenSearch(true) : null
     } catch (error) {
         console.error(error)
     }
@@ -47,7 +48,7 @@ export default function Home() {
     try {
       const res = await axios.post(`api/contacts`, {
         name: data.name,
-        email: data.email,
+        email: !data.email ? '-' : data.email,
         tel: data.tel,
         createdBy: 'nouser',
       })
@@ -68,7 +69,7 @@ export default function Home() {
       const id = contactToEdit
       const res = await axios.put(`api/contacts/${id}`,{
         newName: data.newName,
-        newEmail: data.newEmail,
+        newEmail: !data.newEmail ? '-' : data.newEmail,
         newTel: data.newTel,
       })
       loadContacts()
@@ -104,17 +105,25 @@ export default function Home() {
     })
   }
 
+  const filteredContacts = contacts.filter((contact: Contact) => {
+    const searchText = search.toLowerCase()
+
+    return (
+      contact.name.toLowerCase().includes(searchText) ||
+      contact.email.toLowerCase().includes(searchText) ||
+      handleCreationDate(contact.createdAt).includes(searchText)
+    )
+  })
+
   const handleNewContactModal = () => {
     setOpenModal(!openModal)
-  }
-
-  const handleSearchModal = () => {
-    setOpenSearch(!openSearch)
+    openEdit == true ? setOpenEdit(false) : null
   }
 
   const handleEdit = (id: string) => {
     setContactToEdit(id)
     setOpenEdit(!openEdit)
+    openModal == true ? setOpenModal(false) : null
   }
 
   const handleError = () => {
@@ -123,32 +132,31 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Navbar handleNewContactModal={handleNewContactModal} handleSearchModal={handleSearchModal}/>
+      {openModal || openEdit ? <div className={styles.modalBackdrop} /> : null}
+      <Navbar handleNewContactModal={handleNewContactModal} search={search} setSearch={setSearch}/>
       {openModal && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.inputs}>
-              <input type="text" placeholder="Nome" {...register("name")} />
-              <input type="text" placeholder="E-mail" {...register("email")} />
-              <input type="number" placeholder="Telefone" {...register("tel")} />
-              <button type="submit" value="submit" className={styles.addContactBtn} >Cadastrar</button>
-            </form>
-          </div>
+        <div className={styles.modalAdd}>
+          <form onSubmit={handleSubmit(onSubmit)} className={styles.inputs}>
+            <input type="text" placeholder="Nome" {...register("name")} />
+            <input type="text" placeholder="E-mail" {...register("email")} />
+            <input type="number" placeholder="Telefone" {...register("tel")} />
+            <button type="submit" value="submit" className={styles.addContactBtn} ><MdAddBox /></button>
+            <button onClick={() => handleNewContactModal()} className={styles.closeModalBtn} ><AiFillCloseSquare /></button>
+          </form>
         </div>
       )}
       {openEdit && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <form onSubmit={handleSubmit(onEdit)} className={styles.inputs}>
-              <input type="text" placeholder="Nome" {...register("newName")} />
-              <input type="text" placeholder="E-mail" {...register("newEmail")} />
-              <input type="number" placeholder="Telefone" {...register("newTel")} />
-              <button type="submit" value="submit"className={styles.editContactBtn} >Editar</button>
-            </form>
-          </div>
+        <div className={styles.modalEdit}>
+          <form onSubmit={handleSubmit(onEdit)} className={styles.inputs}>
+            <input type="text" placeholder="Nome" {...register("newName")} />
+            <input type="text" placeholder="E-mail" {...register("newEmail")} />
+            <input type="number" placeholder="Telefone" {...register("newTel")} />
+            <button type="submit" value="submit"className={styles.editContactBtn} ><MdModeEdit /></button>
+            <button onClick={() => handleEdit('')} className={styles.closeModalBtn} ><AiFillCloseSquare /></button>
+          </form>
         </div>
       )}
-      <ContactsPanel handleDelete={handleDelete} handleEdit={handleEdit} contacts={contacts} openSearch={openSearch}/>
+      <ContactsPanel handleDelete={handleDelete} handleEdit={handleEdit} search={search} filteredContacts={filteredContacts} openModal={openModal} openEdit={openEdit}/>
     </main>
   )
 }
