@@ -40,7 +40,9 @@ As bibliotecas que utilizei no projeto:
 * react-hook-form para lidar com os formulários 
 * react-icons para importar ícones de forma mais prática
 * react-toastify para criar notificações ao manipular os dados na UI
+* react-loading-skeleton para criar o loader
 * sweetalert2 para o modal de confirmação ao deletar um contato
+
 ## Autor
 
 - [@zaqueu-1](https://www.github.com/zaqueu-1)
