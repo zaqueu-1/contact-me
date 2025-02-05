@@ -35,11 +35,11 @@ export default function ContactsPanel({ filteredContacts, handleDelete, handleEd
   return (
     <div className={styles.container}>
         <div className={styles.header}>
-          <span>Nome</span>
+          <span>Name</span>
           <span>E-mail</span>
-          <span>Telefone</span>
-          <span>Data de cadastro</span>
-          <span>Ações</span>
+          <span>Telephone</span>
+          <span>Created At</span>
+          <span>Actions</span>
         </div>
         <div className={styles.contacts}>
         {loading && (
@@ -59,11 +59,11 @@ export default function ContactsPanel({ filteredContacts, handleDelete, handleEd
         ))}
         {(filteredContacts.length == 0 && !loading) && (
             <div className={styles.noContacts}>
-              <span>Nenhum contato encontrado</span>
+              <span>No contacts found</span>
             </div>
         )}
         </div>
-        {(filteredContacts.length > 0 && search == '' && !openModal && !openEdit && !loading) && (
+        {(filteredContacts.length > 4 && search == '' && !openModal && !openEdit && !loading) && (
           <div className={styles.paginationContainer}>
             <Pagination currentPage={currentPage} handleDisableNext={handleDisableNext} handlePagination={handlePagination}/>
           </div>

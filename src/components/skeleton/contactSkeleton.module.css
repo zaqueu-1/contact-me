@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    background-color: hsl(240 10% 3.9%/.1);
   }
   
   .contact span:first-of-type, .contact span:nth-of-type(2){
@@ -17,12 +18,14 @@
     align-items: center;
     width: 100%;
     padding: .5rem;
-    background-color: rgb(251, 251, 251);
-    color: rgb(62, 62, 62);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    background-color: hsl(240 10% 3.9%/.4);
+    color: hsl(240 10% 3.9%/.1);
   }
 
   .contact:nth-of-type(even) {
-    background-color: #dddddd;
+    background-color: hsl(240 10% 3.9%/.2);
   }
 
   .contact:last-of-type {

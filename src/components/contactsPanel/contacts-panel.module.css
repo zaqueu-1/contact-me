@@ -22,7 +22,7 @@
     width: 100%;
     min-width: 740px;
     padding: .5rem;
-    background-color: #49B48A;
+    background-color: #0070f3;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
   }
@@ -60,14 +60,16 @@
     justify-content: center;
     align-items: center;
     height: 100px;
-    background-color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    background-color: hsl(240 10% 3.9%/.4);
     border-radius: 0 0 6px 6px;
   }
   
   .noContacts span {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 200;
-    color: rgb(120, 120, 120);
+    color: whitesmoke;
   }
   
   .contact {
@@ -76,12 +78,14 @@
     align-items: center;
     width: 100%;
     padding: .5rem;
-    background-color: rgb(251, 251, 251);
-    color: rgb(62, 62, 62);
+    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    background-color: hsl(240 10% 3.9%/.4);
+    color: whitesmoke;
   }
 
   .contact:nth-of-type(even) {
-    background-color: #dddddd;
+    background-color: hsl(240 10% 3.9%/.2);
   }
 
   .contact:last-of-type {

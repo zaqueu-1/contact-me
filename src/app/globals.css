@@ -5,7 +5,6 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   font-family: 'Roboto', sans-serif;
-  background-color: #EDEDED;
+  background-color: #444444;
 }
