@@ -160,7 +160,3 @@ npm run dev
 - Data isolation between users
 - Input validation and sanitization
 - Secure HTTP-only cookies
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
