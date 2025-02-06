@@ -2,7 +2,6 @@
 
 A modern contact management application built with Next.js 13+. Originally started as a frontend challenge for a company, then it evolved into a full-stack portfolio project showcasing modern web development practices.
 
-
 ## 🚀 Features
 
 - User authentication (register/login)
@@ -36,10 +35,11 @@ A modern contact management application built with Next.js 13+. Originally start
 - **NextAuth.js** - Authentication
 - **bcryptjs** - Password hashing
 
-### Development
+### Development & Deployment
 
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
+- **Vercel** - Deployment platform
 
 ## 📁 Project Structure
 
@@ -160,3 +160,7 @@ npm run dev
 - Data isolation between users
 - Input validation and sanitization
 - Secure HTTP-only cookies
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
