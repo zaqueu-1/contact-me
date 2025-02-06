@@ -1,5 +1,3 @@
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js& logoColor=white) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge& logo=typescript&logoColor=white)
-
 # contact.me
 
 A modern contact management application built with Next.js 13+. Originally started as a frontend challenge for a company, then it evolved into a full-stack portfolio project showcasing modern web development practices.
