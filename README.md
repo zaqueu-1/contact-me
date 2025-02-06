@@ -118,7 +118,7 @@ The application uses NextAuth.js for authentication with the following features:
 1. Clone the repository
 
 ```bash
-git clone https://github.com/zaqueu-1/iprazos-front.git
+git clone https://github.com/zaqueu-1/contact-me.git
 ```
 
 2. Install dependencies
