@@ -8,6 +8,7 @@ import Link from "next/link"
 import styles from "./login.module.css"
 import { toast } from "react-toastify"
 import { useTranslations } from "next-intl"
+import LanguageSelector from "@/components/languageSelector"
 
 export default function Login() {
   const router = useRouter()
@@ -41,6 +42,7 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
+      <LanguageSelector />
       <div className={styles.formContainer}>
         <h1>
           contact<span style={{ color: "#0070f3" }}>.</span>me

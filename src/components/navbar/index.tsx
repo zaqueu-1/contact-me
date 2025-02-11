@@ -7,10 +7,8 @@ import { MdAddBox } from "react-icons/md"
 import { signOut } from "next-auth/react"
 import { BiLogOut } from "react-icons/bi"
 import { NavbarProps } from "./types"
-import { useRouter } from "next/navigation"
 import { useTranslations } from "next-intl"
-import { useLocale } from "@/app/providers"
-import ReactCountryFlag from "react-country-flag"
+import LanguageSelector from "@/components/languageSelector"
 
 export default function Navbar({
   handleNewContactModal,
@@ -19,11 +17,6 @@ export default function Navbar({
   userName,
 }: NavbarProps) {
   const t = useTranslations()
-  const { locale, setLocale } = useLocale()
-
-  const handleLanguageChange = (newLocale: string) => {
-    setLocale(newLocale as "en" | "pt")
-  }
 
   return (
     <div className={styles.navbar}>
@@ -44,26 +37,7 @@ export default function Navbar({
           className={styles.searchInput}
         />
         <span className={styles.userName}>{userName}</span>
-        <div className={styles.langButtons}>
-          <button
-            className={`${styles.langButton} ${
-              locale === "en" ? styles.active : ""
-            }`}
-            onClick={() => handleLanguageChange("en")}
-            title='English'
-          >
-            <ReactCountryFlag countryCode='US' svg />
-          </button>
-          <button
-            className={`${styles.langButton} ${
-              locale === "pt" ? styles.active : ""
-            }`}
-            onClick={() => handleLanguageChange("pt")}
-            title='Português'
-          >
-            <ReactCountryFlag countryCode='BR' svg />
-          </button>
-        </div>
+        <LanguageSelector isNavbar />
         <button onClick={() => signOut()} className={styles.logoutBtn}>
           <BiLogOut />
         </button>

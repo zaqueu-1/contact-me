@@ -8,6 +8,7 @@ import styles from "../login/login.module.css"
 import { toast } from "react-toastify"
 import axios from "axios"
 import { useTranslations } from "next-intl"
+import LanguageSelector from "@/components/languageSelector"
 
 export default function Register() {
   const router = useRouter()
@@ -38,6 +39,7 @@ export default function Register() {
 
   return (
     <div className={styles.container}>
+      <LanguageSelector />
       <div className={styles.formContainer}>
         <h1>
           contact<span style={{ color: "#0070f3" }}>.</span>me
