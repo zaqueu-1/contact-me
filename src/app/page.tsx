@@ -28,7 +28,7 @@ export default function Home() {
   const [contactToEdit, setContactToEdit] = useState("")
   const [search, setSearch] = useState("")
   const [loading, setLoading] = useState(true)
-  const { register, handleSubmit } = useForm<FormValues>()
+  const { register, handleSubmit, reset } = useForm<FormValues>()
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -67,6 +67,7 @@ export default function Home() {
       })
       loadContacts()
       toast.success("Contact added!")
+      reset()
     } catch (error) {
       console.error(error)
       if (axios.isAxiosError(error) && error.response?.status === 401) {
@@ -90,6 +91,7 @@ export default function Home() {
       })
       loadContacts()
       toast.success("Contact edited!")
+      reset()
     } catch (error) {
       console.error(error)
       if (axios.isAxiosError(error) && error.response?.status === 401) {
@@ -140,12 +142,22 @@ export default function Home() {
   const handleNewContactModal = () => {
     setOpenModal(!openModal)
     openEdit == true ? setOpenEdit(false) : null
+    reset()
   }
 
   const handleEdit = (id: string) => {
     setContactToEdit(id)
     setOpenEdit(!openEdit)
     openModal == true ? setOpenModal(false) : null
+
+    const contactToEdit = contacts.find((contact) => contact._id === id)
+    if (contactToEdit) {
+      reset({
+        newName: contactToEdit.name,
+        newEmail: contactToEdit.email === "-" ? "" : contactToEdit.email,
+        newTel: contactToEdit.tel,
+      })
+    }
   }
 
   const handleError = () => {

@@ -2,11 +2,11 @@
 .modalAdd, .modalEdit {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   background-color: #2d2d2d;
   margin: 2rem auto;
-  padding: .25rem;
+  padding: 2rem;
   border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.2);
   border-left: 8px solid #0070f3;
@@ -15,8 +15,6 @@
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
   max-width: 450px;
 }
 
@@ -44,7 +42,9 @@
 
 .inputs input {
   padding: .75rem;
-  width: 350px;
+  min-width: 350px;
+  max-width: 900px;
+  width: 100%;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.2);
   backdrop-filter: blur(8px);
@@ -72,6 +72,7 @@
   justify-content: center;
   gap: .5rem;
   border-radius: 6px;
+  margin-top: .5rem;
 }
 
 .closeModalBtn {
@@ -79,22 +80,19 @@
   color: white;
   background-color: #f04b4b;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: all 0.3s ease-in-out;
   padding: .35rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -.75rem;
-  right: -.75rem;
+  top: -.5rem;
+  right: -.5rem;
   border-radius: 6px;
+  opacity: 1;
 }
 
-.addContactBtn:hover, .editContactBtn:hover {
+.addContactBtn:hover, .editContactBtn:hover, .closeModalBtn:hover {
   opacity: 0.8;
-}
-
-.closeModalBtn:hover {
-  transform: scale(.95);
 }
