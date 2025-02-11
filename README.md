@@ -13,6 +13,8 @@ A modern contact management application built with Next.js 13+. Originally start
 - Loading states with skeleton screens
 - Protected routes
 - User-specific data isolation
+- Internationalization (English/Portuguese) with flag selector
+- Persistent language preference using localStorage
 
 ## 🛠️ Technologies
 
@@ -23,10 +25,12 @@ A modern contact management application built with Next.js 13+. Originally start
 - **React Hook Form** - Form handling
 - **CSS Modules** - Scoped styling
 - **React Icons** - Icon library
+- **React Country Flag** - Country flags for language selector
 - **React Toastify** - Toast notifications
 - **React Loading Skeleton** - Loading states
 - **SweetAlert2** - Modal dialogs
 - **Axios** - HTTP client
+- **next-intl** - Internationalization
 
 ### Backend
 
@@ -54,11 +58,14 @@ src/
 │   └── page.tsx          # Main application page
 ├── components/           # React components
 │   ├── contactsPanel/    # Contacts display
-│   ├── navbar/          # Navigation bar
+│   ├── navbar/          # Navigation bar with language selector
 │   ├── pagination/      # Pagination component
 │   └── skeleton/        # Loading states
-├── libs/                # Utility libraries
-└── types/              # TypeScript types
+├── messages/            # Translation files
+│   ├── en.json         # English translations
+│   └── pt.json         # Portuguese translations
+├── libs/               # Utility libraries
+└── types/             # TypeScript types
 ```
 
 ## 🔐 Authentication
@@ -113,6 +120,16 @@ The application uses NextAuth.js for authentication with the following features:
 }
 ```
 
+## 🌐 Internationalization
+
+The application supports multiple languages with the following features:
+
+- Language switching with country flag selector (🇺🇸 EN / 🇧🇷 PT)
+- Persistent language preference using localStorage
+- Full translation of all UI elements
+- Real-time language switching without page reload
+- Fallback to English for unsupported languages
+
 ## 🚦 Getting Started
 
 1. Clone the repository
@@ -127,7 +144,7 @@ git clone https://github.com/zaqueu-1/contact-me.git
 npm install
 ```
 
-3. Set up environment variables Create a `.env` file with:
+3. Set up environment variables. Create a `.env` file with:
 
 ```
 MONGODB_URI=your_mongodb_uri
@@ -151,6 +168,8 @@ npm run dev
 - Smooth transitions and animations
 - Loading states with skeleton screens
 - Clean and intuitive interface
+- Country flag language selector
+- Toast notifications for user feedback
 
 ## 🔒 Security Features
 

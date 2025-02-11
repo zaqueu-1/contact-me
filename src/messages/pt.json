@@ -1,0 +1,43 @@
+{
+  "auth": {
+    "login": "Entrar",
+    "register": "Registrar",
+    "logout": "Sair",
+    "email": "E-mail",
+    "password": "Senha",
+    "name": "Nome",
+    "loading": "Carregando...",
+    "noAccount": "Não tem uma conta?",
+    "hasAccount": "Já tem uma conta?",
+    "loginHere": "Entre aqui",
+    "registerHere": "Registre-se aqui"
+  },
+  "contacts": {
+    "add": "Adicionar",
+    "edit": "Editar",
+    "delete": "Deletar",
+    "search": "Pesquisar...",
+    "name": "Nome",
+    "email": "E-mail",
+    "telephone": "Telefone",
+    "createdAt": "Criado em",
+    "actions": "Ações",
+    "noContacts": "Nenhum contato encontrado",
+    "confirmDelete": "Deseja mesmo deletar este contato?",
+    "yes": "Sim",
+    "no": "Não"
+  },
+  "messages": {
+    "contactAdded": "Contato adicionado!",
+    "contactEdited": "Contato editado!",
+    "contactDeleted": "Contato deletado!",
+    "error": "Ocorreu um erro",
+    "invalidCredentials": "Credenciais inválidas",
+    "loginError": "Erro ao fazer login",
+    "nameRequired": "Nome é obrigatório",
+    "telephoneRequired": "Telefone é obrigatório",
+    "emailInUse": "E-mail já está em uso",
+    "userCreated": "Usuário criado com sucesso",
+    "userCreateError": "Erro ao criar usuário"
+  }
+}

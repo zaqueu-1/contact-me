@@ -1,0 +1,43 @@
+{
+  "auth": {
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Logout",
+    "email": "E-mail",
+    "password": "Password",
+    "name": "Name",
+    "loading": "Loading...",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginHere": "Login here",
+    "registerHere": "Register here"
+  },
+  "contacts": {
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search...",
+    "name": "Name",
+    "email": "E-mail",
+    "telephone": "Telephone",
+    "createdAt": "Created At",
+    "actions": "Actions",
+    "noContacts": "No contacts found",
+    "confirmDelete": "Do you really want to delete this contact?",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "messages": {
+    "contactAdded": "Contact added!",
+    "contactEdited": "Contact edited!",
+    "contactDeleted": "Contact deleted!",
+    "error": "An error occurred",
+    "invalidCredentials": "Invalid credentials",
+    "loginError": "Login error",
+    "nameRequired": "Name is required",
+    "telephoneRequired": "Telephone is required",
+    "emailInUse": "E-mail already in use",
+    "userCreated": "User created successfully",
+    "userCreateError": "Error creating user"
+  }
+}

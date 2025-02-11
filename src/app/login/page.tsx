@@ -1,15 +1,17 @@
 "use client"
 import { useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
-import { AuthFormValues } from "../types"
+import { AuthFormValues } from "@/app/types"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import styles from "./login.module.css"
 import { toast } from "react-toastify"
+import { useTranslations } from "next-intl"
 
 export default function Login() {
   const router = useRouter()
+  const t = useTranslations()
   const [loading, setLoading] = useState(false)
   const { register, handleSubmit } = useForm<AuthFormValues>()
 
@@ -23,7 +25,7 @@ export default function Login() {
       })
 
       if (result?.error) {
-        toast.error("Invalid credentials")
+        toast.error(t("messages.invalidCredentials"))
         return
       }
 
@@ -31,7 +33,7 @@ export default function Login() {
       router.refresh()
     } catch (error) {
       console.error(error)
-      toast.error("Login error")
+      toast.error(t("messages.loginError"))
     } finally {
       setLoading(false)
     }
@@ -40,24 +42,27 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
-        <h1>contact<span style={{color:"#0070f3"}}>.</span>me</h1>
+        <h1>
+          contact<span style={{ color: "#0070f3" }}>.</span>me
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <input
             type='email'
-            placeholder='E-mail'
+            placeholder={t("auth.email")}
             {...register("email", { required: true })}
           />
           <input
             type='password'
-            placeholder='Password'
+            placeholder={t("auth.password")}
             {...register("password", { required: true })}
           />
           <button type='submit' disabled={loading}>
-            {loading ? "Loading..." : "Log In"}
+            {loading ? t("auth.loading") : t("auth.login")}
           </button>
         </form>
         <p>
-          Don´t have an account? <Link href='/register'>Register</Link>
+          {t("auth.noAccount")}{" "}
+          <Link href='/register'>{t("auth.register")}</Link>
         </p>
       </div>
     </div>
